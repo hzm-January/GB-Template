@@ -3,9 +3,11 @@
 \ProvidesClass{GB-template}[2014/05/24 v1.0 GB-template document class]
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions
-\LoadClass[UTF8, fancyhdr, hyperref]{ctexbook}[2009/09/13]
+\LoadClass[UTF8]{ctexbook}[2009/09/13]
 
 % ----- Loading packages
+\RequirePackage{fancyhdr}
+\RequirePackage{hyperref}
 \RequirePackage{geometry}
 \RequirePackage{pbox}
 \RequirePackage{tikz}
@@ -33,8 +35,8 @@
 \patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
 
 % Sectioning
-\CTEXsetup[titleformat = {\zihao{3}\heiti}, beforeskip = {8mm}, afterskip = {10mm}]{chapter}
-\CTEXoptions[contentsname = {目\qquad{}次}, bibname = {参~考~文~献}, indexname = {索\qquad\quad{}引}]
+\ctexset{chapter={titleformat = {\zihao{3}\heiti}, beforeskip = {8mm}, afterskip = {10mm}}}
+\ctexset{contentsname = {目\qquad{}次}, bibname = {参~考~文~献}, indexname = {索\qquad\quad{}引}}
 \patchcmd{\listoffigures}{\chapter *{\listfigurename }\@mkboth {\MakeUppercase \listfigurename }{\MakeUppercase \listfigurename }}{\vskip 1.2ex}{}{}
 \patchcmd{\listoftables}{\chapter *{\listtablename }\@mkboth {\MakeUppercase \listtablename }{\MakeUppercase \listtablename }}{\vskip 1.2ex}{}{}
 \newcommand{\patchchapter}{%
@@ -52,10 +54,10 @@
 \let\LiamOldMainmatter\mainmatter
 \renewcommand{\mainmatter}{\LiamOldMainmatter%
     \chapter*{\usename}%
-    \CTEXsetup[name = {,}, number = {\arabic{chapter}}, format = {\zihao{5}\heiti}, nameformat = {}, aftername = {\quad}, titleformat = {}, beforeskip = {0ex}, afterskip = {2.3ex plus .2ex}, indent = {0pt}]{chapter}%
-    \CTEXsetup[name = {,}, number = {\arabic{chapter}.\arabic{section}}, format = {\zihao{5}\heiti}, nameformat = {}, aftername = {\quad}, titleformat = {}, beforeskip = {-.5em plus -.1em minus -.1em}, afterskip = {.5em plus .1em}, indent = {0pt}]{section}%
-    \CTEXsetup[name = {,}, number = {\arabic{chapter}.\arabic{section}.\arabic{subsection}}, format = {\zihao{5}\heiti}, nameformat = {}, aftername = {\quad}, titleformat = {}, beforeskip = {-.5em plus -.1em minus -.1em}, afterskip = {.5em plus .1em}, indent = {0pt}]{subsection}%
-    \CTEXsetup[name = {,}, number = {\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}, format = {\zihao{5}\songti}, nameformat = {}, aftername = {\quad}, titleformat = {}, beforeskip = {-.5em plus -.1em minus -.1em}, afterskip = {.5em plus .1em}, indent = {0pt}]{subsubsection}%
+    \ctexset{chapter={name = {,}, number = {\arabic{chapter}}, format = {\zihao{5}\heiti}, nameformat = {}, aftername = {\quad}, titleformat = {}, beforeskip = {0ex}, afterskip = {2.3ex plus .2ex}, indent = {0pt}}}%
+    \ctexset{section={name = {,}, number = {\arabic{chapter}.\arabic{section}}, format = {\zihao{5}\heiti}, nameformat = {}, aftername = {\quad}, titleformat = {}, beforeskip = {-.5em plus -.1em minus -.1em}, afterskip = {.5em plus .1em}, indent = {0pt}}}%
+    \ctexset{subsection={name = {,}, number = {\arabic{chapter}.\arabic{section}.\arabic{subsection}}, format = {\zihao{5}\heiti}, nameformat = {}, aftername = {\quad}, titleformat = {}, beforeskip = {-.5em plus -.1em minus -.1em}, afterskip = {.5em plus .1em}, indent = {0pt}}}%
+    \ctexset{subsubsection={name = {,}, number = {\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}, format = {\zihao{5}\songti}, nameformat = {}, aftername = {\quad}, titleformat = {}, beforeskip = {-.5em plus -.1em minus -.1em}, afterskip = {.5em plus .1em}, indent = {0pt}}}%
     \setcounter{secnumdepth}{3}
     \patchchapter
 }
@@ -67,8 +69,8 @@
     \titlecontents{chapter}[3.0em]{}{\contentslabel{3.0em}}{\hspace*{-3.0em}}{\titlerule*[.7pc]{$\cdot$}\contentspage}
 }
 \newcommand{\appendixsectioning}{%
-    % \CTEXsetup[format = {\centering}]{chapter}
-    \CTEXsetup[format = {\centering}, nameformat = {\zihao{5}\heiti}, titleformat = {\zihao{5}\heiti}, beforeskip = {9mm}, afterskip = {10mm}, aftername = {\endgraf}]{chapter}%
+    % \ctexset[format = {\centering}]{chapter}
+    \ctexset{chapter={format = {\centering}, nameformat = {\zihao{5}\heiti}, titleformat = {\zihao{5}\heiti}, beforeskip = {9mm}, afterskip = {10mm}, aftername = {\endgraf}}}%
 }
 \newcommand{\gchapter}[1]{\chapter[（规范性附录）#1]{（规范性附录）\\#1}}
 \newcommand{\zchapter}[1]{\chapter[（资料性附录）#1]{（资料性附录）\\#1}}
@@ -106,7 +108,7 @@
 % ----- Preamble(s)
 \newenvironment{preamble}[1]{\chapter{#1}}{\clearpage}
 
-% ----- Parameters
+% % ----- Parameters
 \newcommand*{\ICS}[1]{\newcommand*{\useICS}{#1}}
 \newcommand*{\fenlei}[1]{\newcommand*{\usefenlei}{#1}}
 \newcommand*{\biaozhunhao}[1]{\newcommand*{\usebiaozhunhao}{#1}}
@@ -188,7 +190,7 @@
 \titlecontents{table}[3.0em]{}{\contentslabel{3.0em}}{\hspace*{-3.0em}}{\titlerule*[.7pc]{$\cdot$}\contentspage}
 
 % ----- Title Font
-\newcommand*{\titlefont}{\CJKfontspec{SimSun}}
+\newcommand*{\titlefont}{\CJKfontspec{simsun.ttc}}
 
 % ----- Logo
 \newcommand*{\BibTeX}{\hologo{BibTeX}}

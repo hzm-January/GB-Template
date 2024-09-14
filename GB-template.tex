@@ -1,5 +1,6 @@
-%!TEX program = xelatex
-\documentclass{GB-template}
+\PassOptionsToPackage{quiet}{fontspec}
+\documentclass[]{GB-template}
+% \documentclass[]{book}
 
 % use parameters
 \ICS{这里输入 ICS 号}
@@ -14,14 +15,14 @@
 \shishidate{XXXX-XX-XX}
 
 \begin{document}
-% preamble.tex 里面是前言部分。
-\input{preamble.tex}
-% mainmatter 是「正文」的意思。
-% 从这里开始都是正文。
-\mainmatter
-\input{basic-use.tex}
-\input{test.tex}
-% appendix 开始是「附件」
-\appendix\autoclearpage
-\input{appendix.tex}
+    % % preamble.tex 里面是前言部分。
+    \input{body/preamble.tex}
+    % % mainmatter 是「正文」的意思。
+    % % 从这里开始都是正文。
+    \mainmatter
+    \input{body/basic-use.tex}
+    \input{body/test.tex}
+    % % appendix 开始是「附件」
+    % \appendix\autoclearpage
+    \input{body/appendix.tex}
 \end{document}
