@@ -21,3 +21,4 @@ test.py
 *.xdy
 GB-template*.pdf
 .idea/
+out/
